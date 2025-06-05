@@ -113,10 +113,10 @@ The following is required to run test cases in Kovan network
   
   Truffle reads the kovan accounts and infura API KEY from a plain text `.env` file located in root folder.
 
-  The `.env` file should define `MNEMONIC` and `INFURA_APIKEY` as environment variables:
+  The `.env` file should define `PRIVATE_KEY` and `INFURA_APIKEY` as environment variables:
 
 ```
-MNEMONIC="<your mnemonic seed phrase that derives Kovan addresses with funds>"
+PRIVATE_KEY="<your_hexadecimal_private_key_for_kovan_account_with_funds>"
 INFURA_APIKEY="<your valid infura API key>"
 ```
 
@@ -177,6 +177,30 @@ PriceConsumerV3.sol: https://kovan.etherscan.io/address/0x2699f2d5def11f16b6a357
 - Improve test suite coverage
 - Gas optimization
 - Improve README.md
+
+## Environment Variables
+
+To properly configure and deploy the contracts in this project, especially to public testnets or mainnet, you will need to set up environment variables. Create a file named `.env` in the root of the project directory.
+
+This file is used to store sensitive information and should **not** be committed to version control. Make sure `.env` is listed in your `.gitignore` file.
+
+Here are the variables you need to define:
+
+*   `PRIVATE_KEY`: This is the private key of the account you want to use for deploying your contracts and sending transactions. It should be a hexadecimal string.
+    *   **Example**: `PRIVATE_KEY="your_hexadecimal_private_key_here"`
+    *   **Security**: Keep your private key secret and secure. Anyone with access to your private key can control your account.
+
+*   `INFURA_APIKEY`: This is your API key from [Infura](https://infura.io/). Infura provides a connection to Ethereum nodes, allowing you to deploy and interact with contracts on various Ethereum networks without running your own node.
+    *   **Example**: `INFURA_APIKEY="your_infura_api_key_here"`
+
+### .env.example
+
+You can use the following template to create your `.env` file. Copy this content into a new file named `.env` and replace the placeholder values with your actual private key and API key.
+
+```
+PRIVATE_KEY="your_hexadecimal_private_key_here"
+INFURA_APIKEY="your_infura_api_key_here"
+```
 
 ## Credit
 
