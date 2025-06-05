@@ -30,10 +30,40 @@ module.exports = {
      network_id: "*",       // Any network (default: none)
     },
     kovan: {
-      provider: () => new HDWalletProvider({ mnemonic : process.env.MNEMONIC, providerOrUrl : `https://kovan.infura.io/v3/${process.env.INFURA_APIKEY}`, addressIndex : 0 ,  numberOfAddresses : 10}),
+      provider: () => new HDWalletProvider({ privateKeys: [process.env.PRIVATE_KEY], providerOrUrl : `https://kovan.infura.io/v3/${process.env.INFURA_APIKEY}` }),
       network_id: 42,
       gas: 8000000
-    }  
+    },
+    mumbai: {
+      provider: () => new HDWalletProvider({ privateKeys: [process.env.PRIVATE_KEY], providerOrUrl: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_APIKEY}` }),
+      network_id: 80001,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+      gasPrice: 20000000000 // 20 Gwei
+    },
+    polygon: {
+      provider: () => new HDWalletProvider({ privateKeys: [process.env.PRIVATE_KEY], providerOrUrl: `https://polygon-mainnet.infura.io/v3/${process.env.INFURA_APIKEY}` }),
+      network_id: 137,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+      gasPrice: 50000000000 // 50 Gwei
+    },
+    arbitrumGoerli: {
+      provider: () => new HDWalletProvider({ privateKeys: [process.env.PRIVATE_KEY], providerOrUrl: `https://arbitrum-goerli.infura.io/v3/${process.env.INFURA_APIKEY}` }),
+      network_id: 421613,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },
+    arbitrumOne: {
+      provider: () => new HDWalletProvider({ privateKeys: [process.env.PRIVATE_KEY], providerOrUrl: `https://arbitrum-mainnet.infura.io/v3/${process.env.INFURA_APIKEY}` }),
+      network_id: 42161,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    }
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
